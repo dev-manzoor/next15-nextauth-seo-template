@@ -46,7 +46,8 @@ export function deepEqual(a: unknown, b: unknown): boolean {
     if (keysA.length !== keysB.length) return false;
     for (const key of keysA) {
       if (!keysB.includes(key)) return false;
-      if (!deepEqual(a[key as keyof typeof a], b[key as keyof typeof b])) return false;
+      if (!deepEqual(a[key as keyof typeof a], b[key as keyof typeof b]))
+        return false;
     }
     return true;
   }
@@ -56,7 +57,7 @@ export function deepEqual(a: unknown, b: unknown): boolean {
 
 export function pick<T extends Record<string, unknown>, K extends keyof T>(
   obj: T,
-  keys: K[],
+  keys: K[]
 ): Pick<T, K> {
   const result = {} as Pick<T, K>;
   keys.forEach((key) => {
@@ -69,7 +70,7 @@ export function pick<T extends Record<string, unknown>, K extends keyof T>(
 
 export function omit<T extends Record<string, unknown>, K extends keyof T>(
   obj: T,
-  keys: K[],
+  keys: K[]
 ): Omit<T, K> {
   const result = { ...obj };
   keys.forEach((key) => {
@@ -80,7 +81,7 @@ export function omit<T extends Record<string, unknown>, K extends keyof T>(
 
 export function merge<T extends Record<string, unknown>>(
   target: T,
-  source: Partial<T>,
+  source: Partial<T>
 ): T {
   const result = { ...target };
   Object.keys(source).forEach((key) => {
@@ -90,7 +91,10 @@ export function merge<T extends Record<string, unknown>>(
       typeof sourceValue === "object" &&
       !Array.isArray(sourceValue)
     ) {
-      (result as Record<string, unknown>)[key] = merge((result as Record<string, unknown>)[key] as T || {}, sourceValue as T);
+      (result as Record<string, unknown>)[key] = merge(
+        ((result as Record<string, unknown>)[key] as T) || {},
+        sourceValue as T
+      );
     } else {
       (result as Record<string, unknown>)[key] = sourceValue;
     }
@@ -101,7 +105,7 @@ export function merge<T extends Record<string, unknown>>(
 export function get<T extends Record<string, unknown>>(
   obj: T,
   path: string,
-  defaultValue?: unknown,
+  defaultValue?: unknown
 ): unknown {
   const keys = path.split(".");
   let result: unknown = obj;
@@ -119,7 +123,7 @@ export function get<T extends Record<string, unknown>>(
 export function set<T extends Record<string, unknown>>(
   obj: T,
   path: string,
-  value: unknown,
+  value: unknown
 ): T {
   const keys = path.split(".");
   const result = { ...obj };
@@ -164,14 +168,14 @@ export function values<T extends Record<string, unknown>>(obj: T): unknown[] {
 }
 
 export function entries<T extends Record<string, unknown>>(
-  obj: T,
+  obj: T
 ): [keyof T, T[keyof T]][] {
   return Object.entries(obj) as [keyof T, T[keyof T]][];
 }
 
 export function mapKeys<T extends Record<string, unknown>, R extends string>(
   obj: T,
-  fn: (key: keyof T, value: unknown) => R,
+  fn: (key: keyof T, value: unknown) => R
 ): Record<R, unknown> {
   const result = {} as Record<R, unknown>;
   Object.entries(obj).forEach(([key, value]) => {
@@ -182,7 +186,7 @@ export function mapKeys<T extends Record<string, unknown>, R extends string>(
 
 export function mapValues<T extends Record<string, unknown>, R>(
   obj: T,
-  fn: (value: unknown, key: keyof T) => R,
+  fn: (value: unknown, key: keyof T) => R
 ): Record<keyof T, R> {
   const result = {} as Record<keyof T, R>;
   Object.entries(obj).forEach(([key, value]) => {
@@ -201,7 +205,7 @@ export function invert(obj: Record<string, string>): Record<string, string> {
 
 export function defaults<T extends Record<string, unknown>>(
   obj: T,
-  defaults: Partial<T>,
+  defaults: Partial<T>
 ): T {
   const result = { ...defaults, ...obj };
   return result;

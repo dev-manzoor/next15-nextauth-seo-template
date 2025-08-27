@@ -15,6 +15,6 @@ export function formatRelativeTime(date: string | Date): string {
   return formatDistanceToNow(dateObj, { addSuffix: true });
 }
 
-export function isValidDate(date: any): boolean {
-  return date instanceof Date && !isNaN(date.getTime());
+export function isValidDate(date: unknown): boolean {
+  return date instanceof Date && !Number.isNaN(date.getTime());
 }

@@ -2,13 +2,12 @@
 
 import { useSession } from "next-auth/react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
-  CardTitle,
+  CardTitle
 } from "@/components/ui/card";
 
 export function UserProfile() {
@@ -42,11 +41,11 @@ export function UserProfile() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
           <div>
-            <label className="text-sm font-medium text-gray-700">User ID</label>
+            <span className="text-sm font-medium text-gray-700">User ID</span>
             <p className="text-sm text-gray-900 mt-1">{user.id}</p>
           </div>
           <div>
-            <label className="text-sm font-medium text-gray-700">Role</label>
+            <span className="text-sm font-medium text-gray-700">Role</span>
             <p className="text-sm text-gray-900 mt-1">User</p>
           </div>
         </div>

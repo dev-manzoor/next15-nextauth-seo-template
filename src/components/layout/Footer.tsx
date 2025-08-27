@@ -20,28 +20,19 @@ export default function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Features
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Pricing
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       API
-                    </a>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -51,28 +42,19 @@ export default function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Documentation
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Help Center
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Contact Us
-                    </a>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -84,28 +66,19 @@ export default function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       About
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Blog
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Careers
-                    </a>
+                    </span>
                   </li>
                 </ul>
               </div>
@@ -115,20 +88,14 @@ export default function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-4">
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Privacy
-                    </a>
+                    </span>
                   </li>
                   <li>
-                    <a
-                      href="#"
-                      className="text-base text-gray-500 hover:text-gray-900"
-                    >
+                    <span className="text-base text-gray-500 hover:text-gray-900 cursor-pointer">
                       Terms
-                    </a>
+                    </span>
                   </li>
                 </ul>
               </div>

@@ -14,7 +14,7 @@ interface UseFormReturn<T> {
   errors: FormErrors;
   isSubmitting: boolean;
   isValid: boolean;
-  setValue: (name: keyof T, value: any) => void;
+  setValue: (name: keyof T, value: unknown) => void;
   setValues: (values: Partial<T>) => void;
   setError: (name: string, error: string) => void;
   setErrors: (errors: FormErrors) => void;
@@ -24,14 +24,14 @@ interface UseFormReturn<T> {
   handleChange: (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >,
+    >
   ) => void;
 }
 
-export function useForm<T extends Record<string, any>>({
+export function useForm<T extends Record<string, unknown>>({
   initialValues,
   validate,
-  onSubmit,
+  onSubmit
 }: UseFormOptions<T>): UseFormReturn<T> {
   const [values, setValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -40,7 +40,7 @@ export function useForm<T extends Record<string, any>>({
   const isValid = Object.keys(errors).length === 0;
 
   const setValue = useCallback(
-    (name: keyof T, value: any) => {
+    (name: keyof T, value: unknown) => {
       setValues((prev) => ({ ...prev, [name]: value }));
 
       // Clear error for this field if it exists
@@ -52,7 +52,7 @@ export function useForm<T extends Record<string, any>>({
         });
       }
     },
-    [errors],
+    [errors]
   );
 
   const setValuesBulk = useCallback((newValues: Partial<T>) => {
@@ -103,14 +103,14 @@ export function useForm<T extends Record<string, any>>({
         setIsSubmitting(false);
       }
     },
-    [values, validateForm, onSubmit],
+    [values, validateForm, onSubmit]
   );
 
   const handleChange = useCallback(
     (
       e: React.ChangeEvent<
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >,
+      >
     ) => {
       const { name, value, type } = e.target;
 
@@ -121,7 +121,7 @@ export function useForm<T extends Record<string, any>>({
         setValue(name as keyof T, value);
       }
     },
-    [setValue],
+    [setValue]
   );
 
   return {
@@ -136,6 +136,6 @@ export function useForm<T extends Record<string, any>>({
     clearErrors,
     reset,
     handleSubmit,
-    handleChange,
+    handleChange
   };
 }
