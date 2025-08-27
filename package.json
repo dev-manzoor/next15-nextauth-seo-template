@@ -1,6 +1,9 @@
 {
   "name": "next15-nextauth-seo-template",
   "version": "0.1.0",
+  "author": {
+    "name": "Manzoor Ahmad Joyia"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
