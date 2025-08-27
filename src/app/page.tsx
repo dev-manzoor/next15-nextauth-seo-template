@@ -1,17 +1,41 @@
+import { auth } from "@/lib/auth";
+import Link from "next/link";
 import Image from "next/image";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
+
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
+        <div className="text-center sm:text-left">
+          <h1 className="text-2xl font-bold mb-4">Next.js 15 + Auth.js</h1>
+          {session?.user ? (
+            <div>
+              <p className="mb-4">Welcome, {session.user.name}!</p>
+              <p className="mb-4">Email: {session.user.email}</p>
+              <form action="/api/auth/signout" method="post">
+                <button
+                  type="submit"
+                  className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-red-600 text-white font-medium text-sm h-10 px-4 hover:bg-red-700"
+                >
+                  Sign Out
+                </button>
+              </form>
+            </div>
+          ) : (
+            <div>
+              <p className="mb-4">You are not signed in.</p>
+              <Link
+                href="/api/auth/signin"
+                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-blue-600 text-white font-medium text-sm h-10 px-4 hover:bg-blue-700"
+              >
+                Sign In
+              </Link>
+            </div>
+          )}
+        </div>
+
         <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
           <li className="mb-2 tracking-[-.01em]">
             Get started by editing{" "}
