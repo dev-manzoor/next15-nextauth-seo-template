@@ -1,6 +1,6 @@
 // Auth-specific type definitions
 
-import type { DefaultSession } from "next-auth";
+import type { DefaultSession, User as NextAuthUser } from "next-auth";
 
 declare module "next-auth" {
   interface Session {
@@ -61,7 +61,7 @@ export interface ChangePasswordFormData {
 
 // Auth state types
 export interface AuthState {
-  user: any | null;
+  user: NextAuthUser | null;
   isLoading: boolean;
   isAuthenticated: boolean;
   error: string | null;
@@ -70,17 +70,17 @@ export interface AuthState {
 // Auth action types
 export type AuthAction =
   | { type: "LOGIN_START" }
-  | { type: "LOGIN_SUCCESS"; payload: any }
+  | { type: "LOGIN_SUCCESS"; payload: NextAuthUser }
   | { type: "LOGIN_ERROR"; payload: string }
   | { type: "LOGOUT" }
   | { type: "REGISTER_START" }
-  | { type: "REGISTER_SUCCESS"; payload: any }
+  | { type: "REGISTER_SUCCESS"; payload: NextAuthUser }
   | { type: "REGISTER_ERROR"; payload: string }
   | { type: "CLEAR_ERROR" };
 
 // Auth hook return types
 export interface UseAuthReturn {
-  user: any | null;
+  user: NextAuthUser | null;
   isLoading: boolean;
   isAuthenticated: boolean;
   error: string | null;

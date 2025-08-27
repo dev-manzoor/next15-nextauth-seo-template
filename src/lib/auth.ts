@@ -14,6 +14,20 @@ interface CustomToken {
   error?: string;
 }
 
+interface CustomUser {
+  id: string;
+  email?: string | null;
+  name?: string | null;
+  accessToken?: string;
+  refreshToken?: string;
+  accessTokenExpires?: number;
+}
+
+interface CustomSession {
+  accessToken?: string;
+  error?: string;
+}
+
 async function refreshAccessToken(token: CustomToken) {
   try {
     if (!token.refreshToken) return token; // nothing to do
@@ -79,7 +93,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     async jwt({ token, user }) {
       // Initial sign in
       if (user) {
-        const customUser = user as any;
+        const customUser = user as CustomUser;
         token.accessToken = customUser.accessToken;
         token.refreshToken = customUser.refreshToken;
         token.accessTokenExpires = customUser.accessTokenExpires;
@@ -98,7 +112,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       };
     },
     async session({ session, token }) {
-      const customSession = session as any;
+      const customSession = session as CustomSession;
       const customToken = token as CustomToken;
       customSession.accessToken = customToken.accessToken;
       customSession.error = customToken.error;

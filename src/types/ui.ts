@@ -1,5 +1,7 @@
 // UI component type definitions
 
+import type { User } from "./index";
+
 // Button component types
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -96,7 +98,7 @@ export interface ToastActionProps
 
 // Layout component types
 export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
-  user?: any;
+  user?: User;
   onSignOut?: () => void;
 }
 
@@ -147,9 +149,9 @@ export interface AnimationProps {
 export type Breakpoint = "sm" | "md" | "lg" | "xl" | "2xl";
 
 export interface ResponsiveProps {
-  sm?: any;
-  md?: any;
-  lg?: any;
-  xl?: any;
-  "2xl"?: any;
+  sm?: string | number | boolean | undefined;
+  md?: string | number | boolean | undefined;
+  lg?: string | number | boolean | undefined;
+  xl?: string | number | boolean | undefined;
+  "2xl"?: string | number | boolean | undefined;
 }

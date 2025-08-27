@@ -24,14 +24,14 @@ interface UseFormReturn<T> {
   handleChange: (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) => void;
 }
 
 export function useForm<T extends Record<string, unknown>>({
   initialValues,
   validate,
-  onSubmit
+  onSubmit,
 }: UseFormOptions<T>): UseFormReturn<T> {
   const [values, setValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
@@ -52,7 +52,7 @@ export function useForm<T extends Record<string, unknown>>({
         });
       }
     },
-    [errors]
+    [errors],
   );
 
   const setValuesBulk = useCallback((newValues: Partial<T>) => {
@@ -103,14 +103,14 @@ export function useForm<T extends Record<string, unknown>>({
         setIsSubmitting(false);
       }
     },
-    [values, validateForm, onSubmit]
+    [values, validateForm, onSubmit],
   );
 
   const handleChange = useCallback(
     (
       e: React.ChangeEvent<
         HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >
+      >,
     ) => {
       const { name, value, type } = e.target;
 
@@ -121,7 +121,7 @@ export function useForm<T extends Record<string, unknown>>({
         setValue(name as keyof T, value);
       }
     },
-    [setValue]
+    [setValue],
   );
 
   return {
@@ -136,6 +136,6 @@ export function useForm<T extends Record<string, unknown>>({
     clearErrors,
     reset,
     handleSubmit,
-    handleChange
+    handleChange,
   };
 }

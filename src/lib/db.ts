@@ -4,11 +4,11 @@
 export interface DatabaseConnection {
   connect(): Promise<void>;
   disconnect(): Promise<void>;
-  query<T>(sql: string, params?: any[]): Promise<T>;
+  query<T>(sql: string, params?: unknown[]): Promise<T>;
 }
 
 class Database implements DatabaseConnection {
-  private connection: any = null;
+  private connection: unknown = null;
 
   async connect(): Promise<void> {
     // Implement your database connection logic here
@@ -24,7 +24,7 @@ class Database implements DatabaseConnection {
     }
   }
 
-  async query<T>(sql: string, params: any[] = []): Promise<T> {
+  async query<T>(sql: string, params: unknown[] = []): Promise<T> {
     if (!this.connection) {
       throw new Error("Database not connected");
     }
