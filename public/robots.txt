@@ -11,3 +11,4 @@ Host: https://your-domain.com
 
 # Sitemaps
 Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://your-domain.com/server-sitemap.xml
